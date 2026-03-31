@@ -6,7 +6,7 @@
     <title>오늘 저녁 뭐 먹지?</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-lang="ko">
     <div class="ambient ambient-left"></div>
     <div class="ambient ambient-right"></div>
     <main class="container">
@@ -19,7 +19,13 @@
                     버튼 한 번으로 메뉴와 추천 이유를 바로 확인하세요.
                 </p>
             </div>
-            <button id="theme-toggle" type="button" aria-label="색상 테마 전환">Night Mode</button>
+            <div class="hero-actions">
+                <nav class="locale-switch" aria-label="언어 선택">
+                    <a class="locale-link active" href="./index.html">KR</a>
+                    <a class="locale-link" href="./en.html">EN</a>
+                </nav>
+                <button id="theme-toggle" type="button" aria-label="색상 테마 전환">Night Mode</button>
+            </div>
         </section>
 
         <section class="panel controls">

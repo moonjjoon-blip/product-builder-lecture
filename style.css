@@ -40,9 +40,7 @@ body {
     padding: 32px 20px;
     font-family: "Trebuchet MS", "Noto Sans KR", sans-serif;
     color: var(--text-main);
-    background:
-        radial-gradient(circle at top left, rgba(255, 255, 255, 0.65), transparent 28%),
-        linear-gradient(135deg, var(--bg-base), var(--bg-accent));
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.65), transparent 28%), linear-gradient(135deg, var(--bg-base), var(--bg-accent));
     position: relative;
     overflow-x: hidden;
 }
@@ -93,6 +91,39 @@ body {
     justify-content: space-between;
     gap: 20px;
     align-items: flex-start;
+}
+
+.hero-actions {
+    display: grid;
+    gap: 12px;
+    justify-items: end;
+}
+
+.locale-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px;
+    border-radius: 999px;
+    background: var(--surface-strong);
+    border: 1px solid var(--line);
+}
+
+.locale-link {
+    min-width: 44px;
+    padding: 10px 12px;
+    border-radius: 999px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-soft);
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.locale-link.active {
+    background: var(--chip-active);
+    color: var(--chip-active-text);
 }
 
 .eyebrow {
@@ -169,7 +200,8 @@ h1 {
 
 .primary-button:hover,
 #theme-toggle:hover,
-.chip:hover {
+.chip:hover,
+.locale-link:hover {
     transform: translateY(-2px);
 }
 
@@ -259,7 +291,7 @@ h1 {
 }
 
 .history-empty {
-    justify-content: center !important;
+    justify-content: center;
     color: var(--text-soft);
 }
 
@@ -277,6 +309,14 @@ h1 {
     .hero,
     .panel {
         border-radius: 24px;
+    }
+
+    .hero-actions {
+        justify-items: stretch;
+    }
+
+    .locale-switch {
+        justify-content: center;
     }
 
     #theme-toggle,

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Should I Eat Tonight?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-lang="en">
+    <div class="ambient ambient-left"></div>
+    <div class="ambient ambient-right"></div>
+    <main class="container">
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Dinner Picker</p>
+                <h1>Pick Tonight's Dinner<br>Without Overthinking It</h1>
+                <p class="description">
+                    From comforting Korean dishes to quick bites and pasta,
+                    get one strong dinner recommendation with a reason instantly.
+                </p>
+            </div>
+            <div class="hero-actions">
+                <nav class="locale-switch" aria-label="Language switcher">
+                    <a class="locale-link" href="./index.html">KR</a>
+                    <a class="locale-link active" href="./en.html">EN</a>
+                </nav>
+                <button id="theme-toggle" type="button" aria-label="Toggle color theme">Night Mode</button>
+            </div>
+        </section>
+
+        <section class="panel controls">
+            <div class="chip-group" aria-label="Choose a category">
+                <button class="chip active" type="button" data-category="all">All</button>
+                <button class="chip" type="button" data-category="korean">Korean</button>
+                <button class="chip" type="button" data-category="asian">Asian</button>
+                <button class="chip" type="button" data-category="western">Western</button>
+                <button class="chip" type="button" data-category="quick">Quick</button>
+            </div>
+            <button id="recommend" class="primary-button" type="button">Recommend My Dinner</button>
+        </section>
+
+        <section class="panel result-card" aria-live="polite">
+            <p class="result-label">Tonight's pick</p>
+            <h2 id="menu-name">You haven't picked a menu yet.</h2>
+            <p id="menu-description" class="menu-description">
+                Press the button and get a dinner suggestion that fits your mood right now.
+            </p>
+            <div id="menu-tags" class="tags"></div>
+        </section>
+
+        <section class="panel history">
+            <div class="history-header">
+                <h3>Recent picks</h3>
+                <p>Your latest dinner suggestions stay here for quick review.</p>
+            </div>
+            <ul id="history-list"></ul>
+        </section>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>
