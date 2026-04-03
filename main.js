@@ -5,15 +5,23 @@ const menuTags = document.getElementById('menu-tags');
 const historyList = document.getElementById('history-list');
 const themeToggleBtn = document.getElementById('theme-toggle');
 const categoryButtons = document.querySelectorAll('.chip');
+const partnershipForm = document.querySelector('[data-formspree-form]');
+const formStatus = document.querySelector('[data-form-status]');
 
 const lang = document.body.dataset.lang === 'en' ? 'en' : 'ko';
 const themeStorageKey = 'dinner-theme';
 const historyStorageKey = 'dinner-history-' + lang;
+const formspreeEndpoint = 'https://formspree.io/f/mjgpeqzq';
 
 const content = {
     ko: {
         theme: { dark: 'Day Mode', light: 'Night Mode' },
         emptyHistory: '아직 추천 기록이 없습니다.',
+        form: {
+            sending: '문의 전송 중입니다...',
+            success: '문의가 전송되었습니다. 확인 후 연락드리겠습니다.',
+            error: '전송에 실패했습니다. 잠시 후 다시 시도해 주세요.'
+        },
         menus: [
             { name: '매콤 제육볶음 정식', description: '매운맛으로 피로를 날리고 싶을 때 어울리는 든든한 한식 메뉴입니다.', tags: ['한식', '든든함', '퇴근 후'], category: 'korean' },
             { name: '얼큰한 김치찌개', description: '실패 확률이 낮고 밥 한 공기까지 확실하게 해결되는 저녁입니다.', tags: ['한식', '국물', '무난함'], category: 'korean' },
@@ -28,6 +36,11 @@ const content = {
     en: {
         theme: { dark: 'Day Mode', light: 'Night Mode' },
         emptyHistory: 'No recommendations yet.',
+        form: {
+            sending: 'Sending your inquiry...',
+            success: 'Your inquiry was sent. We will review it and get back to you.',
+            error: 'Submission failed. Please try again in a moment.'
+        },
         menus: [
             { name: 'Spicy Pork Stir-Fry Set', description: 'A bold Korean comfort meal when you want something hot, savory, and filling after work.', tags: ['Korean', 'Hearty', 'After Work'], category: 'korean' },
             { name: 'Kimchi Stew', description: 'A dependable dinner pick with rich broth, warm rice, and very little chance of regret.', tags: ['Korean', 'Soup', 'Reliable'], category: 'korean' },
@@ -131,3 +144,33 @@ categoryButtons.forEach((button) => {
 recommendBtn.addEventListener('click', pickMenu);
 
 renderHistory(loadHistory());
+
+if (partnershipForm && formStatus) {
+    partnershipForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        formStatus.textContent = pageContent.form.sending;
+        formStatus.className = 'form-status';
+
+        try {
+            const response = await fetch(formspreeEndpoint, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json'
+                },
+                body: new FormData(partnershipForm)
+            });
+
+            if (!response.ok) {
+                throw new Error('Formspree request failed');
+            }
+
+            partnershipForm.reset();
+            formStatus.textContent = pageContent.form.success;
+            formStatus.classList.add('is-success');
+        } catch (error) {
+            formStatus.textContent = pageContent.form.error;
+            formStatus.classList.add('is-error');
+        }
+    });
+}

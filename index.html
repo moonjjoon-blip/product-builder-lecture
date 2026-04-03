@@ -55,6 +55,33 @@
             </div>
             <ul id="history-list"></ul>
         </section>
+
+        <section class="panel inquiry">
+            <div class="section-copy">
+                <p class="section-label">Partnership</p>
+                <h3>제휴 문의</h3>
+                <p class="section-description">
+                    협업, 광고, 공동 프로모션 제안을 남겨주시면 확인 후 연락드리겠습니다.
+                </p>
+            </div>
+            <form class="inquiry-form" data-formspree-form>
+                <label class="field">
+                    <span>회사 또는 이름</span>
+                    <input type="text" name="name" placeholder="예: Product Builder" required>
+                </label>
+                <label class="field">
+                    <span>이메일</span>
+                    <input type="email" name="email" placeholder="contact@example.com" required>
+                </label>
+                <label class="field">
+                    <span>문의 내용</span>
+                    <textarea name="message" rows="5" placeholder="제휴 목적과 간단한 제안 내용을 적어주세요." required></textarea>
+                </label>
+                <input type="hidden" name="_subject" value="제휴 문의가 도착했습니다">
+                <button class="primary-button" type="submit">제휴 문의 보내기</button>
+                <p class="form-status" data-form-status aria-live="polite"></p>
+            </form>
+        </section>
     </main>
 
     <script src="main.js"></script>

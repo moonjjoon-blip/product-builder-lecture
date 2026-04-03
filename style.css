@@ -250,6 +250,84 @@ h1 {
     padding: 24px;
 }
 
+.inquiry {
+    padding: 28px;
+    display: grid;
+    gap: 22px;
+}
+
+.section-copy h3 {
+    margin: 8px 0 10px;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.section-label {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+}
+
+.section-description {
+    margin: 0;
+    color: var(--text-soft);
+    line-height: 1.7;
+    max-width: 620px;
+}
+
+.inquiry-form {
+    display: grid;
+    gap: 16px;
+}
+
+.field {
+    display: grid;
+    gap: 8px;
+    font-weight: 700;
+}
+
+.field span {
+    font-size: 0.95rem;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 15px 16px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: var(--surface-strong);
+    color: var(--text-main);
+    font: inherit;
+    resize: vertical;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: var(--text-soft);
+}
+
+.field input:focus,
+.field textarea:focus {
+    outline: 2px solid rgba(214, 103, 47, 0.24);
+    outline-offset: 2px;
+}
+
+.form-status {
+    min-height: 1.5em;
+    margin: 0;
+    color: var(--text-soft);
+}
+
+.form-status.is-success {
+    color: #1b7a45;
+}
+
+.form-status.is-error {
+    color: #b23b2e;
+}
+
 .history-header {
     display: flex;
     justify-content: space-between;
@@ -322,6 +400,10 @@ h1 {
     #theme-toggle,
     .primary-button {
         width: 100%;
+    }
+
+    .inquiry {
+        padding: 24px;
     }
 
     #history-list li {
