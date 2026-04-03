@@ -7,11 +7,13 @@ const themeToggleBtn = document.getElementById('theme-toggle');
 const categoryButtons = document.querySelectorAll('.chip');
 const partnershipForm = document.querySelector('[data-formspree-form]');
 const formStatus = document.querySelector('[data-form-status]');
+const disqusThread = document.getElementById('disqus_thread');
 
 const lang = document.body.dataset.lang === 'en' ? 'en' : 'ko';
 const themeStorageKey = 'dinner-theme';
 const historyStorageKey = 'dinner-history-' + lang;
 const formspreeEndpoint = 'https://formspree.io/f/mjgpeqzq';
+const disqusShortname = 'productbuilder-vdlmqoqddt';
 
 const content = {
     ko: {
@@ -173,4 +175,17 @@ if (partnershipForm && formStatus) {
             formStatus.classList.add('is-error');
         }
     });
+}
+
+
+if (disqusThread) {
+    window.disqus_config = function () {
+        this.page.url = window.location.href;
+        this.page.identifier = 'dinner-picker-' + lang;
+    };
+
+    const disqusScript = document.createElement('script');
+    disqusScript.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    disqusScript.setAttribute('data-timestamp', String(Date.now()));
+    (document.head || document.body).appendChild(disqusScript);
 }
