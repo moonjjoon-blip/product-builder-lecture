@@ -77,7 +77,8 @@ body::before {
     background: rgba(219, 107, 63, 0.28);
 }
 
-.page-shell {
+.page-shell,
+.subpage-shell {
     width: min(1180px, 100%);
     margin: 0 auto;
     display: grid;
@@ -129,20 +130,62 @@ h1 {
     line-height: 0.95;
 }
 
+h2 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+
+h3 {
+    font-size: clamp(1.45rem, 3vw, 1.9rem);
+}
+
+p,
+ul {
+    margin: 0;
+}
+
 .hero-description,
 .status-text,
 .result-summary,
 .match-card p,
 .stat-copy,
-.score-meta {
+.score-meta,
+.section-copy,
+details p,
+.site-footer p,
+.tip-list,
+.story-card p,
+.trust-card p,
+.subpage-card p {
     color: var(--muted);
     line-height: 1.7;
 }
 
 .hero-description {
-    margin: 18px 0 0;
+    margin-top: 18px;
     max-width: 640px;
     font-size: 1.02rem;
+}
+
+.site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.site-nav a,
+.text-link,
+.footer-links a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.site-nav a {
+    padding: 9px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.52);
+    border: 1px solid var(--line);
+    font-weight: 700;
 }
 
 .hero-badges {
@@ -186,7 +229,6 @@ h1 {
     min-width: 48px;
     border-radius: 999px;
     text-align: center;
-    text-decoration: none;
     color: var(--text);
     font-weight: 800;
 }
@@ -211,13 +253,30 @@ h1 {
 }
 
 .stat-copy {
-    margin: 10px 0 0;
+    margin-top: 10px;
+}
+
+.app-grid,
+.story-grid,
+.detail-grid,
+.trust-grid,
+.subpage-grid {
+    display: grid;
+    gap: 22px;
 }
 
 .app-grid {
-    display: grid;
     grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-    gap: 22px;
+}
+
+.story-grid,
+.trust-grid,
+.subpage-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.detail-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .panel {
@@ -229,8 +288,13 @@ h1 {
     gap: 8px;
 }
 
-.section-heading h2 {
-    font-size: clamp(1.8rem, 4vw, 2.4rem);
+.section-heading-wide {
+    margin-bottom: 2px;
+}
+
+.section-stack {
+    display: grid;
+    gap: 22px;
 }
 
 .button-row {
@@ -266,7 +330,10 @@ h1 {
 
 .primary-button:hover,
 .secondary-button:hover,
-.locale-link:hover {
+.locale-link:hover,
+.site-nav a:hover,
+.text-link:hover,
+.footer-links a:hover {
     transform: translateY(-2px);
 }
 
@@ -279,7 +346,7 @@ h1 {
 }
 
 .status-text {
-    margin: 18px 0 0;
+    margin-top: 18px;
     min-height: 28px;
 }
 
@@ -361,12 +428,18 @@ h1 {
     display: none;
 }
 
-.score-list {
+.score-list,
+.faq-list {
     display: grid;
     gap: 14px;
 }
 
-.score-item {
+.score-item,
+details,
+.subpage-card,
+.story-card,
+.detail-card,
+.trust-card {
     padding: 16px 18px;
     border-radius: 22px;
     background: rgba(255, 255, 255, 0.66);
@@ -406,10 +479,78 @@ h1 {
     transition: width 0.24s ease;
 }
 
+.tip-list {
+    padding-left: 18px;
+}
+
+.tip-list li + li {
+    margin-top: 10px;
+}
+
+details summary {
+    cursor: pointer;
+    font-weight: 800;
+    list-style: none;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+details p {
+    margin-top: 12px;
+}
+
+.text-link {
+    display: inline-flex;
+    margin-top: 16px;
+    font-weight: 800;
+}
+
+.site-footer {
+    width: min(1180px, calc(100% - 36px));
+    margin: 18px auto 0;
+    padding: 20px 24px;
+    border-radius: 24px;
+    border: 1px solid var(--line);
+    background: rgba(255, 250, 244, 0.7);
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(14px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.site-footer strong {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.subpage-hero {
+    align-items: start;
+}
+
+.subpage-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 @media (max-width: 960px) {
     .hero-card,
     .app-grid,
-    .preview-grid {
+    .preview-grid,
+    .story-grid,
+    .detail-grid,
+    .trust-grid,
+    .subpage-grid {
         grid-template-columns: 1fr;
     }
 
@@ -420,6 +561,11 @@ h1 {
     .locale-switch {
         justify-self: start;
     }
+
+    .site-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 @media (max-width: 640px) {
@@ -428,7 +574,8 @@ h1 {
     }
 
     .hero-card,
-    .panel {
+    .panel,
+    .site-footer {
         padding: 20px;
         border-radius: 24px;
     }
