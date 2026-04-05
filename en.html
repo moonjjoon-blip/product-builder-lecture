@@ -3,99 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What Should I Eat Tonight?</title>
+    <title>Animal Face Test | Puppy Face vs Cat Face</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=SUIT:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body data-lang="en">
-    <div class="ambient ambient-left"></div>
-    <div class="ambient ambient-right"></div>
-    <main class="container">
-        <section class="hero">
+    <div class="noise"></div>
+    <div class="blob blob-one"></div>
+    <div class="blob blob-two"></div>
+
+    <main class="page-shell">
+        <section class="hero-card">
             <div class="hero-copy">
-                <p class="eyebrow">Dinner Picker</p>
-                <h1>Pick Tonight's Dinner<br>Without Overthinking It</h1>
-                <p class="description">
-                    From comforting Korean dishes to quick bites and pasta,
-                    get one strong dinner recommendation with a reason instantly.
+                <p class="eyebrow">AI ANIMAL FACE TEST</p>
+                <h1>Are you more<br>puppy-faced or cat-faced?</h1>
+                <p class="hero-description">
+                    Turn on the camera or upload a photo, and the trained model will
+                    estimate whether your vibe is closer to a puppy face or a cat face.
                 </p>
+                <div class="hero-badges">
+                    <span>Powered by Teachable Machine</span>
+                    <span>Live webcam analysis</span>
+                    <span>Photo upload supported</span>
+                </div>
             </div>
-            <div class="hero-actions">
+
+            <div class="hero-side">
                 <nav class="locale-switch" aria-label="Language switcher">
                     <a class="locale-link" href="./index.html">KR</a>
                     <a class="locale-link active" href="./en.html">EN</a>
                 </nav>
-                <button id="theme-toggle" type="button" aria-label="Toggle color theme">Night Mode</button>
+
+                <div class="stat-card">
+                    <p class="stat-label">Quick Test</p>
+                    <strong>See your face vibe instantly</strong>
+                    <p class="stat-copy">A webcam view or one clear photo is enough.</p>
+                </div>
             </div>
         </section>
 
-        <section class="panel controls">
-            <div class="chip-group" aria-label="Choose a category">
-                <button class="chip active" type="button" data-category="all">All</button>
-                <button class="chip" type="button" data-category="korean">Korean</button>
-                <button class="chip" type="button" data-category="asian">Asian</button>
-                <button class="chip" type="button" data-category="western">Western</button>
-                <button class="chip" type="button" data-category="quick">Quick</button>
-            </div>
-            <button id="recommend" class="primary-button" type="button">Recommend My Dinner</button>
-        </section>
+        <section class="app-grid">
+            <section class="panel control-panel">
+                <div class="section-heading">
+                    <p class="section-label">Step 1</p>
+                    <h2>Prepare your face</h2>
+                </div>
 
-        <section class="panel result-card" aria-live="polite">
-            <p class="result-label">Tonight's pick</p>
-            <h2 id="menu-name">You haven't picked a menu yet.</h2>
-            <p id="menu-description" class="menu-description">
-                Press the button and get a dinner suggestion that fits your mood right now.
-            </p>
-            <div id="menu-tags" class="tags"></div>
-        </section>
+                <div class="button-row">
+                    <button id="start-webcam" class="primary-button" type="button">Start Webcam</button>
+                    <label class="secondary-button" for="image-upload">Upload Photo</label>
+                    <input id="image-upload" type="file" accept="image/*">
+                </div>
 
-        <section class="panel history">
-            <div class="history-header">
-                <h3>Recent picks</h3>
-                <p>Your latest dinner suggestions stay here for quick review.</p>
-            </div>
-            <ul id="history-list"></ul>
-        </section>
+                <p id="status-text" class="status-text" aria-live="polite">Loading the model...</p>
 
-        <section class="panel inquiry">
-            <div class="section-copy">
-                <p class="section-label">Partnership</p>
-                <h3>Partnership Inquiries</h3>
-                <p class="section-description">
-                    Share collaboration, sponsorship, or co-marketing ideas and we will get back to you.
-                </p>
-            </div>
-            <form class="inquiry-form" data-formspree-form>
-                <label class="field">
-                    <span>Company or name</span>
-                    <input type="text" name="name" placeholder="Example: Product Builder" required>
-                </label>
-                <label class="field">
-                    <span>Email</span>
-                    <input type="email" name="email" placeholder="contact@example.com" required>
-                </label>
-                <label class="field">
-                    <span>Message</span>
-                    <textarea name="message" rows="5" placeholder="Tell us what kind of partnership you have in mind." required></textarea>
-                </label>
-                <input type="hidden" name="_subject" value="New partnership inquiry">
-                <button class="primary-button" type="submit">Send Partnership Inquiry</button>
-                <p class="form-status" data-form-status aria-live="polite"></p>
-            </form>
-        </section>
+                <div class="preview-grid">
+                    <div class="preview-card">
+                        <p class="preview-label">Live camera</p>
+                        <div id="webcam-container" class="media-stage empty">
+                            <span>Your webcam preview will appear here.</span>
+                        </div>
+                    </div>
 
-        <section class="panel comments">
-            <div class="section-copy">
-                <p class="section-label">Community</p>
-                <h3>Comments</h3>
-                <p class="section-description">
-                    Share your dinner pick, leave feedback, or suggest a better menu for tonight.
-                </p>
-            </div>
-            <div id="disqus_thread"></div>
-            <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+                    <div class="preview-card">
+                        <p class="preview-label">Uploaded image</p>
+                        <div id="upload-preview" class="media-stage empty">
+                            <span>A front-facing photo usually gives better results.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel result-panel">
+                <div class="section-heading">
+                    <p class="section-label">Step 2</p>
+                    <h2>Prediction</h2>
+                </div>
+
+                <div class="result-hero">
+                    <p class="result-kicker">Current top match</p>
+                    <h3 id="animal-title">Waiting for analysis</h3>
+                    <p id="animal-summary" class="result-summary">
+                        Start the webcam or upload a photo to see your puppy-face vs cat-face score.
+                    </p>
+                </div>
+
+                <div id="top-match-card" class="match-card is-hidden">
+                    <p class="match-label">Interpretation</p>
+                    <strong id="animal-match"></strong>
+                    <p id="animal-description"></p>
+                </div>
+
+                <div id="label-container" class="score-list" aria-live="polite"></div>
+            </section>
         </section>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

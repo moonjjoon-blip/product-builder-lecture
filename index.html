@@ -3,99 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>오늘 저녁 뭐 먹지?</title>
+    <title>동물상 테스트 | 강아지상 vs 고양이상</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=SUIT:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body data-lang="ko">
-    <div class="ambient ambient-left"></div>
-    <div class="ambient ambient-right"></div>
-    <main class="container">
-        <section class="hero">
+    <div class="noise"></div>
+    <div class="blob blob-one"></div>
+    <div class="blob blob-two"></div>
+
+    <main class="page-shell">
+        <section class="hero-card">
             <div class="hero-copy">
-                <p class="eyebrow">Dinner Picker</p>
-                <h1>오늘 저녁,<br>고민 말고 바로 고르기</h1>
-                <p class="description">
-                    한식, 면요리, 든든한 한 끼까지 분위기에 맞춰 추천합니다.
-                    버튼 한 번으로 메뉴와 추천 이유를 바로 확인하세요.
+                <p class="eyebrow">AI ANIMAL FACE TEST</p>
+                <h1>나는 강아지상일까,<br>고양이상일까?</h1>
+                <p class="hero-description">
+                    카메라를 켜거나 사진을 올리면 학습된 모델이 얼굴 분위기를 분석해
+                    강아지상과 고양이상 중 어디에 더 가까운지 바로 보여줍니다.
                 </p>
+                <div class="hero-badges">
+                    <span>Teachable Machine 모델 연동</span>
+                    <span>실시간 웹캠 분석</span>
+                    <span>사진 업로드 지원</span>
+                </div>
             </div>
-            <div class="hero-actions">
+
+            <div class="hero-side">
                 <nav class="locale-switch" aria-label="언어 선택">
                     <a class="locale-link active" href="./index.html">KR</a>
                     <a class="locale-link" href="./en.html">EN</a>
                 </nav>
-                <button id="theme-toggle" type="button" aria-label="색상 테마 전환">Night Mode</button>
+
+                <div class="stat-card">
+                    <p class="stat-label">테스트 포인트</p>
+                    <strong>지금 바로 얼굴 분위기 확인</strong>
+                    <p class="stat-copy">웹캠 또는 사진 한 장이면 충분합니다.</p>
+                </div>
             </div>
         </section>
 
-        <section class="panel controls">
-            <div class="chip-group" aria-label="추천 카테고리 선택">
-                <button class="chip active" type="button" data-category="all">전체</button>
-                <button class="chip" type="button" data-category="korean">한식</button>
-                <button class="chip" type="button" data-category="asian">아시안</button>
-                <button class="chip" type="button" data-category="western">양식</button>
-                <button class="chip" type="button" data-category="quick">간단하게</button>
-            </div>
-            <button id="recommend" class="primary-button" type="button">저녁 메뉴 추천받기</button>
-        </section>
+        <section class="app-grid">
+            <section class="panel control-panel">
+                <div class="section-heading">
+                    <p class="section-label">Step 1</p>
+                    <h2>얼굴을 준비하세요</h2>
+                </div>
 
-        <section class="panel result-card" aria-live="polite">
-            <p class="result-label">오늘의 추천</p>
-            <h2 id="menu-name">아직 메뉴를 고르지 않았어요.</h2>
-            <p id="menu-description" class="menu-description">
-                버튼을 누르면 지금 기분에 어울리는 저녁 메뉴를 골라드립니다.
-            </p>
-            <div id="menu-tags" class="tags"></div>
-        </section>
+                <div class="button-row">
+                    <button id="start-webcam" class="primary-button" type="button">웹캠 시작하기</button>
+                    <label class="secondary-button" for="image-upload">사진 업로드</label>
+                    <input id="image-upload" type="file" accept="image/*">
+                </div>
 
-        <section class="panel history">
-            <div class="history-header">
-                <h3>최근 추천 기록</h3>
-                <p>방금 본 메뉴를 다시 확인할 수 있습니다.</p>
-            </div>
-            <ul id="history-list"></ul>
-        </section>
+                <p id="status-text" class="status-text" aria-live="polite">모델을 불러오는 중입니다...</p>
 
-        <section class="panel inquiry">
-            <div class="section-copy">
-                <p class="section-label">Partnership</p>
-                <h3>제휴 문의</h3>
-                <p class="section-description">
-                    협업, 광고, 공동 프로모션 제안을 남겨주시면 확인 후 연락드리겠습니다.
-                </p>
-            </div>
-            <form class="inquiry-form" data-formspree-form>
-                <label class="field">
-                    <span>회사 또는 이름</span>
-                    <input type="text" name="name" placeholder="예: Product Builder" required>
-                </label>
-                <label class="field">
-                    <span>이메일</span>
-                    <input type="email" name="email" placeholder="contact@example.com" required>
-                </label>
-                <label class="field">
-                    <span>문의 내용</span>
-                    <textarea name="message" rows="5" placeholder="제휴 목적과 간단한 제안 내용을 적어주세요." required></textarea>
-                </label>
-                <input type="hidden" name="_subject" value="제휴 문의가 도착했습니다">
-                <button class="primary-button" type="submit">제휴 문의 보내기</button>
-                <p class="form-status" data-form-status aria-live="polite"></p>
-            </form>
-        </section>
+                <div class="preview-grid">
+                    <div class="preview-card">
+                        <p class="preview-label">실시간 카메라</p>
+                        <div id="webcam-container" class="media-stage empty">
+                            <span>웹캠을 시작하면 여기에 표시됩니다.</span>
+                        </div>
+                    </div>
 
-        <section class="panel comments">
-            <div class="section-copy">
-                <p class="section-label">Community</p>
-                <h3>댓글</h3>
-                <p class="section-description">
-                    메뉴 추천에 대한 의견이나 다른 저녁 아이디어를 남겨보세요.
-                </p>
-            </div>
-            <div id="disqus_thread"></div>
-            <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+                    <div class="preview-card">
+                        <p class="preview-label">업로드 이미지</p>
+                        <div id="upload-preview" class="media-stage empty">
+                            <span>정면 사진을 올리면 분석 정확도가 더 좋아집니다.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel result-panel">
+                <div class="section-heading">
+                    <p class="section-label">Step 2</p>
+                    <h2>분석 결과</h2>
+                </div>
+
+                <div class="result-hero">
+                    <p class="result-kicker">현재 가장 가까운 타입</p>
+                    <h3 id="animal-title">분석 대기 중</h3>
+                    <p id="animal-summary" class="result-summary">
+                        웹캠을 켜거나 사진을 업로드하면 강아지상/고양이상 확률을 보여드립니다.
+                    </p>
+                </div>
+
+                <div id="top-match-card" class="match-card is-hidden">
+                    <p class="match-label">대표 해석</p>
+                    <strong id="animal-match"></strong>
+                    <p id="animal-description"></p>
+                </div>
+
+                <div id="label-container" class="score-list" aria-live="polite"></div>
+            </section>
         </section>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
