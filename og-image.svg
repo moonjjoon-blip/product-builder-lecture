@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Animal Face Test social preview">
+  <defs>
+    <linearGradient id="bg" x1="140" y1="40" x2="1040" y2="590" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff7ef"/>
+      <stop offset="0.52" stop-color="#f6e7d6"/>
+      <stop offset="1" stop-color="#f3cfaf"/>
+    </linearGradient>
+    <linearGradient id="orb" x1="240" y1="80" x2="940" y2="530" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffdfc2"/>
+      <stop offset="1" stop-color="#db6b3f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="36" fill="url(#bg)"/>
+  <circle cx="150" cy="110" r="120" fill="#ffffff" fill-opacity="0.32"/>
+  <circle cx="1040" cy="520" r="170" fill="#db6b3f" fill-opacity="0.15"/>
+  <g transform="translate(760 118)">
+    <rect x="0" y="0" width="280" height="280" rx="84" fill="#fffaf4" fill-opacity="0.82"/>
+    <path d="M98 72 58 136c-8 14 7 32 24 26l61-23Z" fill="#bf4c2d"/>
+    <path d="M182 72l40 64c8 14-7 32-24 26l-61-23Z" fill="#bf4c2d"/>
+    <circle cx="140" cy="148" r="94" fill="url(#orb)"/>
+    <path d="M98 114c12-24 26-36 42-36s30 12 42 36" fill="none" stroke="#fff4ea" stroke-linecap="round" stroke-width="12"/>
+    <circle cx="103" cy="161" r="12" fill="#25160f"/>
+    <circle cx="177" cy="161" r="12" fill="#25160f"/>
+    <path d="M140 178l-12 14h24Z" fill="#25160f"/>
+    <path d="M112 208c8 12 18 18 28 18s20-6 28-18" fill="none" stroke="#25160f" stroke-linecap="round" stroke-width="10"/>
+  </g>
+  <text x="92" y="146" fill="#705448" font-size="32" font-family="SUIT, Noto Sans KR, sans-serif" letter-spacing="8">AI ANIMAL FACE TEST</text>
+  <text x="92" y="262" fill="#25160f" font-size="88" font-family="Black Han Sans, SUIT, sans-serif">동물상 테스트</text>
+  <text x="92" y="340" fill="#25160f" font-size="56" font-family="SUIT, Noto Sans KR, sans-serif" font-weight="800">강아지상 vs 고양이상</text>
+  <text x="92" y="414" fill="#705448" font-size="34" font-family="SUIT, Noto Sans KR, sans-serif">웹캠 또는 사진으로 바로 분석하고</text>
+  <text x="92" y="462" fill="#705448" font-size="34" font-family="SUIT, Noto Sans KR, sans-serif">해석, 정확도 팁, 개인정보 안내까지 확인</text>
+  <g transform="translate(92 518)">
+    <rect width="196" height="54" rx="27" fill="#ffffff" fill-opacity="0.7"/>
+    <text x="28" y="35" fill="#25160f" font-size="24" font-family="SUIT, Noto Sans KR, sans-serif" font-weight="700">KR / EN</text>
+  </g>
+</svg>

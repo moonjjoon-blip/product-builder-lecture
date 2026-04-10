@@ -1,0 +1,19 @@
+{
+  "name": "Animal Face Test",
+  "short_name": "Animal Face Test",
+  "description": "강아지상 테스트와 고양이상 테스트를 웹캠 또는 사진으로 바로 해보고, AI 얼굴 분위기 분석 결과와 해석, 정확도 팁, 개인정보 안내까지 한 번에 확인하세요.",
+  "lang": "ko",
+  "start_url": "https://moonjjoon-blip.github.io/product-builder-lecture/",
+  "scope": "https://moonjjoon-blip.github.io/product-builder-lecture/",
+  "display": "standalone",
+  "background_color": "#f7f1e8",
+  "theme_color": "#db6b3f",
+  "icons": [
+    {
+      "src": "/favicon-animal.svg?v=20260410",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
