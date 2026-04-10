@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://moonjjoon-blip.github.io/product-builder-lecture/sitemap.xml
+Sitemap: https://product-builder-lecture-dca.pages.dev/sitemap.xml
