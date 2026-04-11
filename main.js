@@ -280,3 +280,76 @@ const warmModelOnIdle = () => {
 };
 
 window.addEventListener('load', warmModelOnIdle, { once: true });
+
+// --- SNS Sharing Logic ---
+
+// Kakao SDK Initialization (Replace with your actual JavaScript Key if you have one)
+// For now, it will gracefully handle the missing key error if called.
+if (lang === 'ko') {
+    const script = document.createElement('script');
+    script.src = 'https://t1.kakaocdn.net/kakao_js_sdk/2.7.0/kakao.min.js';
+    script.integrity = 'sha384-l686YpALf8pUK0SUE8ZfR9fA7L6r1yInw9HwT5FS33XQ5Z06Kj9uC47C+34A4lW';
+    script.crossOrigin = 'anonymous';
+    script.onload = () => {
+        if (window.Kakao && !window.Kakao.isInitialized()) {
+            // User would need to put their real key here for Kakao sharing to work properly
+            // window.Kakao.init('YOUR_KAKAO_JS_KEY'); 
+        }
+    };
+    document.head.appendChild(script);
+}
+
+function shareKakao() {
+    if (window.Kakao && window.Kakao.isInitialized()) {
+        window.Kakao.Share.sendDefault({
+            objectType: 'feed',
+            content: {
+                title: '동물상 테스트',
+                description: '나는 강아지상일까, 고양이상일까? AI로 분석하는 얼굴 분위기 테스트',
+                imageUrl: 'https://product-builder-lecture-dca.pages.dev/og-image.svg',
+                link: {
+                    mobileWebUrl: 'https://product-builder-lecture-dca.pages.dev/',
+                    webUrl: 'https://product-builder-lecture-dca.pages.dev/',
+                },
+            },
+            buttons: [
+                {
+                    title: '테스트하러 가기',
+                    link: {
+                        mobileWebUrl: 'https://product-builder-lecture-dca.pages.dev/',
+                        webUrl: 'https://product-builder-lecture-dca.pages.dev/',
+                    },
+                },
+            ],
+        });
+    } else {
+        // Fallback or alert if Kakao is not ready
+        copyLink();
+    }
+}
+
+function shareFacebook() {
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=400');
+}
+
+function shareTwitter() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(lang === 'ko' ? '나는 강아지상일까, 고양이상일까? AI 동물상 테스트 결과 확인하기!' : 'Am I more puppy-faced or cat-faced? Check out this AI Animal Face Test!');
+    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'width=600,height=400');
+}
+
+async function copyLink() {
+    try {
+        await navigator.clipboard.writeText(window.location.href);
+        alert(lang === 'ko' ? '링크가 복사되었습니다!' : 'Link copied to clipboard!');
+    } catch (err) {
+        console.error('Failed to copy: ', err);
+    }
+}
+
+// Global exposure for onclick attributes
+window.shareKakao = shareKakao;
+window.shareFacebook = shareFacebook;
+window.shareTwitter = shareTwitter;
+window.copyLink = copyLink;

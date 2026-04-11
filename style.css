@@ -556,6 +556,19 @@ details p {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.share-icon-button {
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.2s ease;
+}
+
+.share-icon-button:hover {
+    transform: scale(1.1) translateY(-2px);
+    filter: brightness(1.05);
+}
+
+.share-icon-button:active {
+    transform: scale(0.95);
+}
+
 @media (max-width: 960px) {
     .hero-card,
     .app-grid,
