@@ -74,6 +74,7 @@ const ui = content[lang];
 let model;
 let webcam;
 let isModelLoading = false;
+let hasScheduledWarmup = false;
 
 statusText.textContent = ui.loading;
 animalTitle.textContent = ui.waitingTitle;
@@ -256,7 +257,26 @@ const handleImageUpload = async (event) => {
 startWebcamButton.addEventListener('click', startWebcam);
 imageUploadInput.addEventListener('change', handleImageUpload);
 
-ensureModel().catch(() => {
-    animalTitle.textContent = ui.waitingTitle;
-    animalSummary.textContent = ui.modelError;
-});
+const warmModelOnIdle = () => {
+    if (hasScheduledWarmup) {
+        return;
+    }
+
+    hasScheduledWarmup = true;
+
+    const warmup = () => {
+        ensureModel().catch(() => {
+            animalTitle.textContent = ui.waitingTitle;
+            animalSummary.textContent = ui.modelError;
+        });
+    };
+
+    if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(warmup, { timeout: 2500 });
+        return;
+    }
+
+    window.setTimeout(warmup, 1800);
+};
+
+window.addEventListener('load', warmModelOnIdle, { once: true });
